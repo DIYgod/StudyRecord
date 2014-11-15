@@ -1,0 +1,12 @@
+import java.io.*;
+public class TestPrintStream {
+	public static void main(String[] args) {
+		try {
+			FileOutputStream fos = new FileOutputStream("~diygod/Code/Java/test.txt");
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		PrintStream ps = new PrintStream(fos);
+	}
+
+}
