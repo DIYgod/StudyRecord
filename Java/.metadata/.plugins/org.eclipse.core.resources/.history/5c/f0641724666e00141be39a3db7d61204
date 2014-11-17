@@ -1,0 +1,26 @@
+import java.net.*;
+import java.io.*;
+
+public class ChatClient {
+	public static void main(String[] args) {
+		try {
+			@SuppressWarnings("resource")
+			Socket client = new Socket("127.0.0.1",1207);
+			
+			BufferedReader serverin = new BufferedReader(new InputStreamReader(client.getInputStream()));
+			PrintWriter clientout = new  PrintWriter(client.getOutputStream());
+			BufferedReader standin = new BufferedReader(new InputStreamReader(System.in));
+			String s = null;
+			
+			do {
+				System.out.println("Server: " + serverin.readLine());
+				System.out.println("Client: ");
+				s = standin.readLine();
+				clientout.println(s);
+				clientout.flush();
+			} while(!s.equals("q"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
