@@ -1,0 +1,23 @@
+import java.awt.*;
+
+public class TestFrame {
+	public static void main(String[] args)
+	{
+		iFrame f1 = new iFrame(100, 100, 100, 100, Color.orange, "L");
+		iFrame f2 = new iFrame(200, 100, 100, 100, Color.blue, "o");
+		iFrame f3 = new iFrame(100, 200, 100, 100, Color.gray, "k");
+		iFrame f4 = new iFrame(200, 200, 100, 100, Color.red, "i");
+	}
+}
+
+class iFrame extends Frame
+{
+	static int id = 0;
+	iFrame(int x, int y, int w, int h, Color c, String name)
+	{
+		super(name);
+		setBounds(x, y, w, h);
+		setBackground(c);
+		setVisible(true);
+	}
+}

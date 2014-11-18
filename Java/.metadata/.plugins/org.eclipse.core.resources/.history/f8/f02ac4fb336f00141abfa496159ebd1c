@@ -1,0 +1,24 @@
+import java.awt.*;
+
+public class TestPanel {
+	public static void main(String[] args)
+	{
+		new PanelCenter("Anotherhome", 400, 300, 400, 300, Color.orange, Color.gray);
+	}
+}
+
+
+class PanelCenter extends Frame
+{
+	private Panel p;
+	PanelCenter(String name, int x, int y, int w, int h, Color framecolor, Color panelcolor)
+	{
+		super(name);
+		setLayout(null);
+		p.setBounds((int)(3 / 8 * w), (int)(3 / 8 * h), (int)(w / 4), (int)(h / 4));
+		p.setBackground(panelcolor);
+		add(p);
+		setBounds(x, y, w, h);
+		setVisible(true);
+	}
+}
