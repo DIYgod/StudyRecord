@@ -5,7 +5,6 @@ public class TestLayout {
 	{
 		Frame f = new Frame("TestLayout");
 		f.setLayout(new GridLayout(2, 1));
-		f.setBounds(300, 400, 300, 200);
 		
 		Panel p1 = new Panel(new BorderLayout());
 		p1.add(new Button("B11"), BorderLayout.WEST);
@@ -27,6 +26,7 @@ public class TestLayout {
 		
 		f.add(p1);
 		f.add(p2);
+		f.pack();
 		f.setVisible(true);
 	}
 }

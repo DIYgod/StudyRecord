@@ -1,0 +1,23 @@
+import java.awt.*;
+
+public class TextFieldCalculator {
+	public static void main(String[] args)
+	{
+		
+	}
+}
+
+@SuppressWarnings("serial")
+class Calculator extends Frame
+{
+	TextField tf1 = new TextField(10);
+	TextField tf2 = new TextField(10);
+	TextField tf3 = new TextField(15);
+	Label l = new Label("+");
+	Button b = new Button("=");
+	setLayout(new FlowLayout());
+	add(tf1);
+	add(tf2);
+	add(tf3);
+	
+}
