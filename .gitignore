@@ -74,3 +74,8 @@ hs_err_pid*
 
 # KDE directory preferences
 .directory
+
+/RemoteSystemsTempFiles
+/.metadata
+/bin
+/.settings
