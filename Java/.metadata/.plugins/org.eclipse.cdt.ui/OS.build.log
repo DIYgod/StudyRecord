@@ -1,0 +1,60 @@
+21:53:35 **** Build of configuration Debug for project OS ****
+make all 
+Building file: ../TestCreatProcess.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"TestCreatProcess.d" -MT"TestCreatProcess.d" -o "TestCreatProcess.o" "../TestCreatProcess.c"
+../TestCreatProcess.c: In function ‘main’:
+../TestCreatProcess.c:7:2: warning: implicit declaration of function ‘fork’ [-Wimplicit-function-declaration]
+  if(p1 = fork())
+  ^
+../TestCreatProcess.c:7:2: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+../TestCreatProcess.c:14:3: warning: implicit declaration of function ‘wait’ [-Wimplicit-function-declaration]
+   wait(0);
+   ^
+../TestCreatProcess.c:19:3: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+   if(p2 = fork())
+   ^
+Finished building: ../TestCreatProcess.c
+ 
+Building file: ../TestLockProcess.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"TestLockProcess.d" -MT"TestLockProcess.d" -o "TestLockProcess.o" "../TestLockProcess.c"
+../TestLockProcess.c: In function ‘main’:
+../TestLockProcess.c:7:2: warning: implicit declaration of function ‘fork’ [-Wimplicit-function-declaration]
+  if(p1 = fork())
+  ^
+../TestLockProcess.c:7:2: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+../TestLockProcess.c:9:3: warning: implicit declaration of function ‘lockf’ [-Wimplicit-function-declaration]
+   lockf(1, 1, 0);
+   ^
+../TestLockProcess.c:16:3: warning: implicit declaration of function ‘wait’ [-Wimplicit-function-declaration]
+   wait(0);
+   ^
+../TestLockProcess.c:21:3: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+   if(p2 = fork())
+   ^
+Finished building: ../TestLockProcess.c
+ 
+Building file: ../TestPipe.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"TestPipe.d" -MT"TestPipe.d" -o "TestPipe.o" "../TestPipe.c"
+../TestPipe.c: In function ‘main’:
+../TestPipe.c:35:4: warning: implicit declaration of function ‘wait’ [-Wimplicit-function-declaration]
+    wait(0);              /*同步*/
+    ^
+Finished building: ../TestPipe.c
+ 
+Building target: OS
+Invoking: GCC C Linker
+gcc  -o "OS"  ./TestCreatProcess.o ./TestLockProcess.o ./TestPipe.o   
+./TestLockProcess.o：在函数‘main’中：
+/home/diygod/Code/Study/OS/Debug/../TestLockProcess.c:5: `main'被多次定义
+./TestCreatProcess.o:/home/diygod/Code/Study/OS/Debug/../TestCreatProcess.c:5：第一次在此定义
+./TestPipe.o：在函数‘main’中：
+/home/diygod/Code/Study/OS/Debug/../TestPipe.c:8: `main'被多次定义
+./TestCreatProcess.o:/home/diygod/Code/Study/OS/Debug/../TestCreatProcess.c:5：第一次在此定义
+collect2: error: ld returned 1 exit status
+make: *** [OS] 错误 1
+
+21:53:35 Build Finished (took 265ms)
+

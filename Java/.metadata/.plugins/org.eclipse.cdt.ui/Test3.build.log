@@ -1,0 +1,15 @@
+21:52:46 **** Incremental Build of configuration Debug for project Test3 ****
+make all 
+Building file: ../Test.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Test.d" -MT"Test.d" -o "Test.o" "../Test.c"
+Finished building: ../Test.c
+ 
+Building target: Test3
+Invoking: GCC C Linker
+gcc  -o "Test3"  ./Test.o   
+Finished building target: Test3
+ 
+
+21:52:46 Build Finished (took 117ms)
+

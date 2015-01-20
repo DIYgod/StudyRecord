@@ -1,0 +1,6 @@
+22:21:34 **** Incremental Build of configuration Debug for project TestPipe ****
+make all 
+make: 没有什么可以做的为 `all'。
+
+22:21:34 Build Finished (took 70ms)
+

@@ -1,0 +1,6 @@
+22:00:37 **** Incremental Build of configuration Debug for project TestLockProcess ****
+make all 
+make: 没有什么可以做的为 `all'。
+
+22:00:37 Build Finished (took 67ms)
+

@@ -1,0 +1,81 @@
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+
+public class ChatServer {
+	public static void main(String[] args)
+	{
+		ChatServerFrame cf = new ChatServerFrame();
+	}
+}
+
+class ChatServerFrame extends JFrame
+{
+	JTextArea out = new JTextArea(1, 30);
+	JTextArea in = new JTextArea(20, 30);
+	String read = null;
+	ChatServerFrame()
+	{
+		super("Chat");
+	    in.setBorder(BorderFactory.createRaisedBevelBorder());
+	    out.setLineWrap(true);
+	    in.setLineWrap(true);
+		Button send = new Button("Send");
+		send.addActionListener(new ServerSendMonitor());
+	    add(out, BorderLayout.SOUTH);
+		add(in, BorderLayout.CENTER);
+		add(send, BorderLayout.EAST	);
+		pack();
+		setVisible(true);
+	}
+	
+	class ServerSendMonitor implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			ServerSocket server = null;
+			Socket client = null;
+			try {
+				server = new ServerSocket(1207);
+			} catch (IOException e1) {
+				in.append("Error: Can't listen to port");
+				e1.printStackTrace();
+			}
+
+			try {
+				client = server.accept();
+				in.append("LinkStart!");
+				
+				BufferedReader clientin = new BufferedReader(new InputStreamReader(client.getInputStream()));
+				PrintWriter serverout = new  PrintWriter(client.getOutputStream());
+				String s = "";
+				
+				while(!s.equals("q"))
+				{
+					in.append("Client: " + clientin.readLine());
+					in.append("Server: ");
+					serverout.println(out.getText());
+					serverout.flush();
+				}
+				
+				clientin.close();
+				serverout.close();
+				server.close();
+				client.close();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
+}

@@ -1,0 +1,60 @@
+import java.net.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.GridLayout;
+import java.awt.Panel;
+import java.io.*;
+
+import javax.swing.*;
+
+public class ChatClient {
+	public static void main(String[] args) {
+		new ChatFrame();
+		
+		
+		try {
+			Socket client = new Socket("127.0.0.1",1207);
+			
+			BufferedReader serverin = new BufferedReader(new InputStreamReader(client.getInputStream()));
+			PrintWriter clientout = new  PrintWriter(client.getOutputStream());
+			BufferedReader standin = new BufferedReader(new InputStreamReader(System.in));
+			String s = "nothing";
+			
+			while(!s.equals("q"))
+			{
+				System.out.print("Client: ");
+				s = standin.readLine();
+				clientout.println(s);
+				clientout.flush();
+				System.out.println("Server: " + serverin.readLine());
+			}
+			
+			serverin.close();
+			clientout.close();
+			standin.close();
+			client.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+
+class ChatFrame extends JFrame
+{
+	JTextArea in = new JTextArea(1, 30);
+	JTextArea out = new JTextArea(10, 30);
+	ChatFrame()
+	{
+		super("Chat");
+		setLayout(new GridLayout(2, 1));
+		Panel p1 = new Panel(new BorderLayout());
+		p1.add(in);
+		Panel p2 = new Panel(new BorderLayout());
+		p2.add(out);
+		add(p1);
+		add(p2);
+		pack();
+		setVisible(true);
+	}
+}

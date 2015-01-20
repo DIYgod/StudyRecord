@@ -1,0 +1,31 @@
+import java.net.*;
+import java.util.*;
+
+public class MAC {
+	public static void main(String[] args)
+	{
+		
+	}
+	
+	static String getMAC()
+	{
+		String mac = null;
+		Enumeration<NetworkInterface> nifs;
+		try {
+			nifs = NetworkInterface.getNetworkInterfaces();
+			if(nifs.hasMoreElements())
+			{
+				NetworkInterface nif = nifs.nextElement();
+				mac.concat(nif.getDisplayName() + ": ");
+				byte[]	 mac_b = nif.getHardwareAddress();
+				for(int i = 0; i < mac_b.length; i++)
+				{
+					mac.concat("" + Integer.toHexString(mac_b[i]));
+				}
+			}
+		} catch (SocketException e) {
+			e.printStackTrace();
+		}
+		
+	}
+}

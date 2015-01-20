@@ -1,0 +1,70 @@
+import java.net.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.event.*;
+import java.io.*;
+
+import javax.swing.*;
+
+public class ChatClient {
+	public static void main(String[] args) {
+		Socket client;
+		BufferedReader serverin;
+		PrintWriter clientout;
+		BufferedReader standin;
+		try {
+			client = new Socket("127.0.0.1",1207);
+			serverin = new BufferedReader(new InputStreamReader(client.getInputStream()));
+			clientout = new  PrintWriter(client.getOutputStream());
+			standin = new BufferedReader(new InputStreamReader(System.in));
+			String s = "";
+			
+			while(!s.equals("q"))
+			{
+				System.out.print("Client: ");
+				s = standin.readLine();
+				clientout.println(s);
+				clientout.flush();
+				System.out.println("Server: " + serverin.readLine());
+			}
+			
+			serverin.close();
+			clientout.close();
+			standin.close();
+			client.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
+	
+
+
+class ChatFrame extends JFrame
+{
+	JTextArea out = new JTextArea(1, 30);
+	JTextArea in = new JTextArea(20, 30);
+	String read = null;
+	ChatFrame()
+	{
+		super("ChatClient");
+	    in.setBorder(BorderFactory.createRaisedBevelBorder());
+	    out.setLineWrap(true);
+	    in.setLineWrap(true);
+		Button send = new Button("Send");
+		send.addActionListener(new SendMonitor());
+	    add(out, BorderLayout.SOUTH);
+		add(in, BorderLayout.CENTER);
+		add(send, BorderLayout.EAST);
+		pack();
+		setVisible(true);
+	}
+	
+	class SendMonitor implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			
+		}
+	}
+}

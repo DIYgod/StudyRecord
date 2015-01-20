@@ -1,0 +1,46 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class ChatServer {
+	public static void main(String[] args)
+	{
+		ChatFrame cf = new ChatFrame();
+		
+		ServerSocket server = null;
+		Socket client = null;
+		try {
+			server = new ServerSocket(1207);
+		} catch (IOException e) {
+			cf.in.append("Error: Can't listen to port");
+			e.printStackTrace();
+		}
+
+		try {
+			client = server.accept();
+			cf.in.append("LinkStart!");
+			
+			BufferedReader clientin = new BufferedReader(new InputStreamReader(client.getInputStream()));
+			PrintWriter serverout = new  PrintWriter(client.getOutputStream());
+			String s = "";
+			
+			while(!s.equals("q"))
+			{
+				cf.in.append("Client: " + clientin.readLine());
+				cf.in.append("Server: ");
+				serverout.println(cf.read);
+				serverout.flush();
+			}
+			
+			clientin.close();
+			serverout.close();
+			server.close();
+			client.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

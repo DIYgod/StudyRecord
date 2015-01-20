@@ -1,0 +1,12 @@
+12:51:57 **** Incremental Build of configuration Debug for project GetMACAddress_C ****
+make all 
+Building file: ../MACAddress.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"MACAddress.d" -MT"MACAddress.d" -o "MACAddress.o" "../MACAddress.c"
+Finished building: ../MACAddress.c
+ 
+Building target: GetMACAddress_C
+Invoking: GCC C Linker
+gcc  -o "GetMACAddress_C"  ./MACAddress.o   
+Finished building target: GetMACAddress_C
+ 

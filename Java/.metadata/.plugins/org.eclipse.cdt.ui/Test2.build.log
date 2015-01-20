@@ -1,0 +1,6 @@
+21:48:39 **** Incremental Build of configuration Debug for project Test2 ****
+make all 
+make: 没有什么可以做的为 `all'。
+
+21:48:39 Build Finished (took 71ms)
+

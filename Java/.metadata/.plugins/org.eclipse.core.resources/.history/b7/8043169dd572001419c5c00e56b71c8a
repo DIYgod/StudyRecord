@@ -1,0 +1,57 @@
+import java.net.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.io.*;
+
+import javax.swing.border.*;
+import javax.swing.*;
+
+public class ChatClient {
+	public static void main(String[] args) {
+		new ChatFrame();
+		
+		
+		try {
+			Socket client = new Socket("127.0.0.1",1207);
+			
+			BufferedReader serverin = new BufferedReader(new InputStreamReader(client.getInputStream()));
+			PrintWriter clientout = new  PrintWriter(client.getOutputStream());
+			BufferedReader standin = new BufferedReader(new InputStreamReader(System.in));
+			String s = "nothing";
+			
+			while(!s.equals("q"))
+			{
+				System.out.print("Client: ");
+				s = standin.readLine();
+				clientout.println(s);
+				clientout.flush();
+				System.out.println("Server: " + serverin.readLine());
+			}
+			
+			serverin.close();
+			clientout.close();
+			standin.close();
+			client.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+
+class ChatFrame extends JFrame
+{
+	JTextArea in = new JTextArea(1, 30);
+	JTextArea out = new JTextArea(10, 30);
+	ChatFrame()
+	{
+		super("Chat");
+		JPanel p1 = new JPanel();
+	    p1.setBorder(BorderFactory.createRaisedBevelBorder());
+		p1.add(in, BorderLayout.SOUTH);
+		p1.add(out, BorderLayout.CENTER);
+	    add(p1);
+		pack();
+		setVisible(true);
+	}
+}
