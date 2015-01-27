@@ -67,3 +67,55 @@ ctrl
     +z
     +r
 tab
+
+; && || |
+netstat | grep ESTABLISHED | wc -l
+
+通配符
+? * []
+
+‘’ “” `` &() # $ \
+
+
+vim
+
+vim abc
+vim + abc
+vim +3 abc
+vim +/xxx abc       n
+
+模式切换: i 
+
+底行模式
+:!
+:q
+:w
+:wq
+:q!
+:n
+:N
+:ls
+:<num>
+/xxx
+?xxx
+
+命令模式
+h j k l 
+ctrl+f (font)
+ctrl+b (back)
+ctrl+d (down)
+ctrl+u (up)
+dd
+o
+yy
+p
+P
+
+
+磁盘管理
+df
+    -a
+    -h
+    -T
+du
+    
