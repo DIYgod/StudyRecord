@@ -52,7 +52,6 @@ class Baidu_Spider:
 
     def find_title(self, myPage):
         myMatch = re.search(r'<h1.*?>(.*?)</h1>', myPage, re.S)
-        title = 'No title'
         if myMatch:
             title = myMatch.group(1)
         else:
@@ -82,7 +81,7 @@ class Baidu_Spider:
             data = self.myTool.Replace_Char(item.replace('\n', '').encode('utf-8'))
             self.datas.append(data+'\n')
 
-print u"""#---------------------------------------
+print """#---------------------------------------
 #   程序：百度贴吧爬虫
 #   版本：0.5
 #   作者：why
