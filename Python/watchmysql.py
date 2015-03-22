@@ -11,7 +11,7 @@ from email.mime.text import MIMEText
 def send_mail(to_list, sub, content):
     mail_host = 'smtp.gmail.com'
     mail_user = 'diy.d.god@gmail.com'
-    mail_pass = 'kielqxynvplcljvb'
+    mail_pass = ''
     msg = MIMEText(content, _subtype = 'html', _charset = 'utf-8')
     msg['Subject'] = sub
     msg['From'] = mail_user
