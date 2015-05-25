@@ -4,7 +4,7 @@ from email.mime.text import MIMEText
 mailto_list = ['306578968@qq.com']
 mail_host = 'smtp.qq.com'
 mail_user = '306578968@qq.com'
-mail_pass = '199506090512mmqq'
+mail_pass = ''
 
 def send_mail(to_list, sub, content):
     msg = MIMEText(content, _subtype = 'html', _charset = 'utf-8')
